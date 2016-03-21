@@ -16,9 +16,7 @@ file(GLOB CSI_AVRO_SRC
 
 ADD_LIBRARY(csi-avro STATIC ${CSI_AVRO_SRC})
 
-if(WIN32)
-add_definitions(-Dssize_t=int)
-ADD_LIBRARY(csi-snappy STATIC 
+SET(SNAPPY_SRCS
         ${SNAPPY_PATH}/snappy.h 
         ${SNAPPY_PATH}/snappy.cc
         ${SNAPPY_PATH}/snappy-c.cc
@@ -28,6 +26,11 @@ ADD_LIBRARY(csi-snappy STATIC
         ${SNAPPY_PATH}/snappy-sinksource.h
         ${SNAPPY_PATH}/snappy-stubs-internal.cc
         ${SNAPPY_PATH}/snappy-stubs-internal.h)        
+
+if(WIN32)
+add_definitions(-Dssize_t=int)
 endif()
 
+ADD_LIBRARY(csi-snappy STATIC ${SNAPPY_SRCS})
+	
 add_subdirectory(csi_http_common)
