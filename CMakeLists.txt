@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.11)
+
 #INCLUDE(${CMAKE_SOURCE_DIR}/../build-scripts/CMakeDependencies.txt)
 #set(EXT_LIBS ${CSI_HTTP_CLIENT_LIBS})
 

@@ -10,4 +10,4 @@ SET(LIB_SRCS
     )
 
 add_library (csi-http-common STATIC ${LIB_SRCS})
-
+target_include_directories(csi-http-common ${CSI_INCLUDE_PATH})
