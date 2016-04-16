@@ -17,27 +17,24 @@
 #include <boost/noncopyable.hpp>
 #include <boost/smart_ptr/detail/spinlock.hpp>
 
-namespace csi
-{
-    class spinlock : public boost::noncopyable
-    {
-    public:
-        spinlock();
-        inline bool try_lock() { return _sl.try_lock(); }
-        inline void lock()     { _sl.lock(); }
-        inline void unlock()   { _sl.unlock(); }
+namespace csi {
+  class spinlock : public boost::noncopyable {
+  public:
+    spinlock();
+    inline bool try_lock() { return _sl.try_lock(); }
+    inline void lock() { _sl.lock(); }
+    inline void unlock() { _sl.unlock(); }
 
-        class scoped_lock
-        {
-        public:
-            inline explicit scoped_lock(spinlock & sp) : _sl(sp)  { _sl.lock(); }
-            inline ~scoped_lock()                                 { _sl.unlock(); }
-        private:
-            scoped_lock(scoped_lock const &);
-            scoped_lock & operator=(scoped_lock const &);
-            spinlock& _sl;
-        };
+    class scoped_lock {
+    public:
+      inline explicit scoped_lock(spinlock & sp) : _sl(sp) { _sl.lock(); }
+      inline ~scoped_lock() { _sl.unlock(); }
     private:
-        boost::detail::spinlock _sl;
+      scoped_lock(scoped_lock const &);
+      scoped_lock & operator=(scoped_lock const &);
+      spinlock& _sl;
     };
+  private:
+    boost::detail::spinlock _sl;
+  };
 };
