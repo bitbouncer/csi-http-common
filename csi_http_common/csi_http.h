@@ -17,7 +17,7 @@
 #include <iostream>
 #include <boost/function.hpp>
 #include <boost/asio.hpp>
-#include <avro/Stream.hh>
+//#include <avro/Stream.hh>
 
 namespace csi {
   namespace http {
@@ -119,4 +119,4 @@ inline std::string to_string(const boost::asio::ip::tcp::endpoint& ep) {
   return ep.address().to_string() + buf;
 }
 
-std::string debug_to_string(const avro::OutputStream& os);
+//std::string debug_to_string(const avro::OutputStream& os);

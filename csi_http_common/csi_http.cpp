@@ -77,6 +77,7 @@ const std::string& to_string(csi::http::method_t e)
 }
 
 
+/*
 std::string debug_to_string(const avro::OutputStream& os)
 {
     std::string res;
@@ -89,5 +90,5 @@ std::string debug_to_string(const avro::OutputStream& os)
     reader.readBytes((uint8_t*)&res[0], sz);
     //assert(actual == sz);
     return res;
-}
-;
+};
+*/
